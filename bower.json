@@ -1,0 +1,21 @@
+{
+  "name": "SocketChat",
+  "version": "0.0.1",
+  "homepage": "https://github.com/rockdragon/SocketChat",
+  "authors": [
+    "Locke <moyerock@gmail.com>"
+  ],
+  "description": "Chat room scaffolding",
+  "main": "./web/www.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "avalon": "*"
+  }
+}
