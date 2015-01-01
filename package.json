@@ -9,6 +9,10 @@
     "url": "git://github.com/rockdragon/SocketChat.git"
   },
   "dependencies": {
+    "rimraf" : "*",
+    "underscore": "*",
+    "underscore.string":"*",
+    "winston": "*",
     "socket.io": "^1.2.1",
     "co": "^4.0",
     "koa": "^0.14.0",
