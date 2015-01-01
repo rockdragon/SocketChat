@@ -1,0 +1,17 @@
+{
+  "name": "SocketChat",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node --harmony ./bin/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rockdragon/SocketChat.git"
+  },
+  "dependencies": {
+    "socket.io": "*"
+  },
+  "engines": {
+    "node": ">=0.11.14"
+  }
+}
