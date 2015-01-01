@@ -3,13 +3,20 @@ var mount = require('koa-mount');
 var router = require('koa-router');
 var render = require('koa-ejs');
 var serve = require('koa-static');
+var session = require('koa-session');
 var getAbsolutePath = require('../modules/other/pathUtils').getAbsolutePath;
 var config = require("../modules/config/configUtils").getConfigs();
 var logger = require("../modules/logger/logUtils");
 var socketServer = require('./sockets/server');
+var sessionIdentity = require('./middlewares/sessionIdentity');
 
 //settings
 var app = koa();
+app.keys = [config.SECRET];
+app.use(session(app));
+
+app.use(sessionIdentity());
+
 app.on('error', function(err){
     logger.error(err, err.ctx);
 });

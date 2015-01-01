@@ -9,9 +9,9 @@
     "url": "git://github.com/rockdragon/SocketChat.git"
   },
   "dependencies": {
-    "rimraf" : "*",
+    "rimraf": "*",
     "underscore": "*",
-    "underscore.string":"*",
+    "underscore.string": "*",
     "winston": "*",
     "socket.io": "^1.2.1",
     "co": "^4.0",
@@ -19,7 +19,8 @@
     "koa-mount": "*",
     "koa-ejs": "*",
     "koa-static": "*",
-    "koa-router": "*"
+    "koa-router": "*",
+    "koa-session": "*"
   },
   "engines": {
     "node": ">=0.11.14"

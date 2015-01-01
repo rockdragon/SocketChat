@@ -20,7 +20,7 @@ function messageHandler(io) {
     io.on('connection', function (socket) {
         console.log(socket.id, " just connected.");
 
-        socket.emit('news', {greeting: 'welcome.'});
+        socket.send({greeting: 'welcome.'});
         socket.on('broadcast', function (data) {
             console.log(data);
         });

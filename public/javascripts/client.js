@@ -1,8 +1,8 @@
 // generate socket connection
 var socketClient = function () {
     var socket = io.connect();
-    socket.on('message', function (time) {
-        console.log('received server timestamp:' + time);
+    socket.on('message', function (msg) {
+        console.log('received from the server:', msg);
     });
     return socket;
 };
