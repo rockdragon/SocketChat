@@ -89,7 +89,7 @@ function getRootURL(url) {
 module.exports.getRootURL = getRootURL;
 
 function getAbsolutePath(suffix) {
-    var root = process.env.spider_web || process.cwd();
+    var root = process.env.chat_home || process.cwd();
     return path.join(root, suffix);
 }
 module.exports.getAbsolutePath = getAbsolutePath;
