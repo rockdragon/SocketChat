@@ -2,7 +2,7 @@ var crypto = require('crypto');
 var config = require("../../modules/config/configUtils").getConfigs();
 
 /*
-* genearte session_id in cookie
+* generate session_id in cookie
 * */
 var sign = function (val, secret) {
     return val + '.' + crypto
