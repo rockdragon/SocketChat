@@ -6,6 +6,7 @@ var serve = require('koa-static');
 var getAbsolutePath = require('../modules/other/pathUtils').getAbsolutePath;
 var config = require("../modules/config/configUtils").getConfigs();
 var logger = require("../modules/logger/logUtils");
+var socketServer = require('./sockets/server');
 
 //settings
 var app = koa();
@@ -32,5 +33,6 @@ var admin = require(getAbsolutePath('web/www/routers/chat'));
 app.use(mount('/chat', admin.middleware()));
 
 //listen
-app.listen(config.www_port);
+var server = socketServer.createServer(app);
+server.listen(config.www_port);
 console.log('listening on port', config.www_port);
