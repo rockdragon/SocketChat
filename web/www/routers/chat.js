@@ -10,7 +10,9 @@ router.get('/', function *() {
     console.log('session_id', session_id, 'name', name);
     if(session_id && name) {
         socketHandler.addUser(name, session_id);
-        yield this.render('../www/views/chat', { others: socketHandler.otherUsers(session_id)});
+        var others = socketHandler.otherUsers(session_id);
+        console.log(others);
+        yield this.render('../www/views/chat', { others: others});
     } else {
         this.redirect('/chat/login');
     }

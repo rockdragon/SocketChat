@@ -11,9 +11,7 @@ module.exports.otherUsers = otherUsers;
  *  [{name, session_id, socket} ...]
  * */
 var users = [];
-function getUsers(){
-    return users;
-}
+
 function findInUsers(session_id) {
     var index = -1;
     for (var j = 0, len = users.length; j < len; j++) {
@@ -87,8 +85,8 @@ function messageHandler(io) {
         });
 
         socket.on('disconnect', function () {
-            var sessionId = getSessionId(socket.request.headers.cookie, 'koa:sess');
-            removeUser(sessionId);
+            //var sessionId = getSessionId(socket.request.headers.cookie, 'koa:sess');
+            //removeUser(sessionId);
             console.log(this.id, ' has been disconnect.');
         });
     });
