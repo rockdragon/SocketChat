@@ -13,6 +13,9 @@
     <div id="messages">
         <select id="target">
             <option value="broadcast">所有人</option>
+            <% for(var i=0; i< others.length; i++) { %>
+                <option value="<%= others[i].session_id %>"><%= others[i].name %></option>
+            <% } %>
         </select>
         <input id="message" type="text" placeholder="输入你要发送的消息" />
         <input id="send" type="button" value="发送" />

@@ -8,14 +8,11 @@ var getAbsolutePath = require('../modules/other/pathUtils').getAbsolutePath;
 var config = require("../modules/config/configUtils").getConfigs();
 var logger = require("../modules/logger/logUtils");
 var socketHandler = require('./middlewares/socketHandler');
-var sessionIdentity = require('./middlewares/sessionIdentity');
 
 //settings
 var app = koa();
 app.keys = [config.SECRET];
 app.use(session(app));
-
-app.use(sessionIdentity());
 
 app.on('error', function(err){
     logger.error(err, err.ctx);
@@ -34,8 +31,8 @@ render(app, {
 });
 
 //routes
-var admin = require(getAbsolutePath('web/www/routers/chat'));
-app.use(mount('/chat', admin.middleware()));
+var chat = require(getAbsolutePath('web/www/routers/chat'));
+app.use(mount('/chat', chat.middleware()));
 
 //listen
 var server = socketHandler.createServer(app);

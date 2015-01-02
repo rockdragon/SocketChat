@@ -2,13 +2,15 @@ var Router = require('koa-router'),
     router = new Router();
 var parse = require('co-body');
 var config = require('../../../modules/config/configUtils').getConfigs();
+var socketHandler = require('../../middlewares/socketHandler');
 
 router.get('/', function *() {
-    var session_id = this.cookies.get(config.session_key);
+    var session_id = this.cookies.get('koa:sess');
     var name = this.session.name;
-    console.log('name:', name, ', session:', session_id);
+    console.log('session_id', session_id, 'name', name);
     if(session_id && name) {
-        yield this.render('../www/views/chat');
+        socketHandler.addUser(name, session_id);
+        yield this.render('../www/views/chat', { others: socketHandler.otherUsers(session_id)});
     } else {
         this.redirect('/chat/login');
     }
