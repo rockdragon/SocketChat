@@ -24,8 +24,8 @@ windows下:
 源码下载后，请在项目目录下依次执行命令:
 =====
 ```shell
-    npm install
-    bower install
+$ sudo npm install
+$ sudo bower install
 ```
 Node版本
 =====
