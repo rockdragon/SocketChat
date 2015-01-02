@@ -8,7 +8,7 @@ linux下:
     export chat_home=/xx/xxx/repo/SocketChat
 
 windows下:
-    set system environment variable `chat_home`
+    设置系统变量 `chat_home`
     d:\repo\SocketChat
 
 配置文件，放置在项目根目录下，名为 config.cfg
