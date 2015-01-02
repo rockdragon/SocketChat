@@ -12,12 +12,13 @@ router.get('/', function *() {
         socketHandler.addUser(name, session_id);
         var others = socketHandler.otherUsers(session_id);
         console.log(others);
-        yield this.render('../www/views/chat', { others: others});
+        yield this.render('../www/views/chat');
     } else {
         this.redirect('/chat/login');
     }
 });
 
+//登录
 router.get('/login', function*(){
     yield this.render('../www/views/login')
 });
@@ -25,6 +26,18 @@ router.post('/login', function*(){
     var body = yield parse(this);
     this.session.name = body.name || 'guest';
     this.redirect('/chat')
+});
+
+//获取其他人列表
+router.post('/others', function*(){
+    var session_id = this.cookies.get('koa:sess');
+    var name = this.session.name;
+    if(session_id && name) {
+        this.type = 'application/json';
+        this.body = socketHandler.otherUsers(session_id);
+    } else {
+        this.status = 404;
+    }
 });
 
 module.exports = router;

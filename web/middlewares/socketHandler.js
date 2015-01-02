@@ -43,7 +43,7 @@ function otherUsers(session_id){
     var results = [];
     for (var j = 0, len = users.length; j < len; j++) {
         if (users[j].session_id !== session_id)
-            results.push(users[j]);
+            results.push({session_id: users[j].session_id, name: users[j].name});
     }
     return results;
 }

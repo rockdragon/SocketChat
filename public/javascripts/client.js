@@ -51,6 +51,24 @@ $(function(){
             }
         }
     });
+
+    //定时获取其他人列表
+    function updateOthers(){
+        $.post('/chat/others', function(others){
+            for(var i=0, len=others.length; i < len; i++){
+                var one = others[i];
+                var optGroup =  $('#optGroup');
+                var opt = optGroup.find('option[value="' + one.session_id + '"]');
+                console.log(opt);
+                if(opt.length === 0){
+                    optGroup.append('<option value="' + others[i].session_id + '">'
+                        + others[i].name + '</option>');
+                }
+            }
+            setTimeout(updateOthers, 1000);
+        });
+    }
+    setTimeout(updateOthers, 1000);
 });
 
 
