@@ -1,0 +1,25 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title>Socket chat</title>
+    <link href="/stylesheets/style.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<header id="banner">
+    <h1>Socket Chat</h1>
+</header>
+<section id="chatroom">
+    <div id="login">
+        <form method="post" action="/chat/login" enctype="application/x-www-form-urlencoded">
+            <input name="name" type="text" placeholder="输入名字" required/>
+            <input type="submit" value="登录"/>
+        </form>
+    </div>
+</section>
+<footer>
+    Hope you enjoy your stay here
+</footer>
+<script src="/jquery/dist/jquery.min.js"></script>
+</body>
+</html>

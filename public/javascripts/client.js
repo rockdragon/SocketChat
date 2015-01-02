@@ -1,16 +1,21 @@
-// generate socket connection
-var socketClient = function () {
-    var socket = io.connect();
-    socket.on('message', function (msg) {
-        console.log('received from the server:', msg);
-    });
-    return socket;
-};
+$(function(){
+    // generate socket connection
+    var socketClient = function () {
+        var socket = io.connect('/', {
+            reconnection: false
+        });
+        return socket;
+    };
 
-var socket = socketClient();
-socket.on('connect', function () {
-    console.log('connection established.');
+    var socket = socketClient();
+    socket.on('connect', function () {
+        console.log('connection established.');
+    });
+    socket.on('disconnect', function () {
+        console.log('disconnected.');
+    });
+
+    // message handler
 });
-socket.on('error', function () {
-    socket = socketClient();
-});
+
+

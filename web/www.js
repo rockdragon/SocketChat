@@ -7,7 +7,7 @@ var session = require('koa-session');
 var getAbsolutePath = require('../modules/other/pathUtils').getAbsolutePath;
 var config = require("../modules/config/configUtils").getConfigs();
 var logger = require("../modules/logger/logUtils");
-var socketServer = require('./sockets/server');
+var socketHandler = require('./middlewares/socketHandler');
 var sessionIdentity = require('./middlewares/sessionIdentity');
 
 //settings
@@ -38,6 +38,6 @@ var admin = require(getAbsolutePath('web/www/routers/chat'));
 app.use(mount('/chat', admin.middleware()));
 
 //listen
-var server = socketServer.createServer(app);
+var server = socketHandler.createServer(app);
 server.listen(config.www_port);
 console.log('listening on port', config.www_port);

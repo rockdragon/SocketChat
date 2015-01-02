@@ -20,7 +20,8 @@
     "koa-ejs": "*",
     "koa-static": "*",
     "koa-router": "*",
-    "koa-session": "*"
+    "koa-session": "*",
+    "co-body": "*"
   },
   "engines": {
     "node": ">=0.11.14"

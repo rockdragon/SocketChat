@@ -3,18 +3,24 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <title>Socket chat</title>
+    <link href="/stylesheets/style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-<header>
+<header id="banner">
     <h1>Socket Chat</h1>
 </header>
-<div id="main">
-
-</div>
+<section id="chatroom">
+    <div id="messages">
+        <select id="target">
+            <option value="broadcast">所有人</option>
+        </select>
+        <input id="message" type="text" placeholder="输入你要发送的消息" />
+        <input id="send" type="button" value="发送" />
+    </div>
+</section>
 <footer>
-    footer
+    Hope you enjoy your stay here
 </footer>
-
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/javascripts/client.js"></script>

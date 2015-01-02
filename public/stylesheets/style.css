@@ -1,0 +1,64 @@
+html {
+    height: 100%;
+}
+body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    height: -moz-calc(100% - 20px);
+    height: -webkit-calc(100% - 20px);
+    height: calc(100% - 20px);
+}
+section#chatroom {
+    height: -moz-calc(100% - 80px);
+    height: -webkit-calc(100% - 80px);
+    height: calc(100% - 80px);
+    background-color: #EFFFEC;
+}
+div#login, div#messages{
+    height: -moz-calc(100% - 35px);
+    height: -webkit-calc(100% - 35px);
+    height: calc(100% - 35px);
+    padding: 10px;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+}
+select#target {
+    width: 120px;
+}
+input#message {
+    width: -moz-calc(100% - 210px);
+    width: -webkit-calc(100% - 210px);
+    width: calc(100% - 210px);
+}
+input#send {
+    width: 74px;
+}
+header{
+    background-color:#4192C1;
+    text-align: right;
+    margin-top: 15px;
+}
+header h1{
+    padding: 5px;
+    padding-right: 15px;
+    color: #FFFFFF;
+    margin: 0px;
+}
+footer{
+    padding: 6px;
+    background-color:#4192C1;
+    color: #FFFFFF;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    margin: 0px;
+    margin-bottom: 10px;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+}
+a {
+    color: #00B7FF;
+}
