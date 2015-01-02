@@ -5,7 +5,9 @@ SocketChat
 环境变量设置
 ======
 linux下:
+    ```shell
     export chat_home=/xx/xxx/repo/SocketChat
+    ```
 
 windows下:
     设置系统变量 `chat_home`
@@ -21,9 +23,10 @@ windows下:
 ```
 源码下载后，请在项目目录下依次执行命令:
 =====
-npm install
-bower install
-
+```shell
+    npm install
+    bower install
+```
 Node版本
 =====
 v0.11.14
