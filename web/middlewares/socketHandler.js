@@ -35,10 +35,6 @@ function setUserSocket(session_id, socket){
         users[index].socket = socket;
     }
 }
-function removeUser(session_id) {
-    var index = findInUsers(session_id);
-    return index > -1 ? users.splice(index, 1) : null;
-}
 function findUser(session_id) {
     var index = findInUsers(session_id);
     return index > -1 ? users[index] : null;
@@ -73,20 +69,26 @@ function messageHandler(io) {
             setUserSocket(sessionId, socket);
         }
 
-        socket.on('broadcast', function (msg) {
-            socket.broadcast.send(msg);
+        socket.on('broadcast', function (data) {
+            var fromUser = findUser(sessionId);
+            if(fromUser) {
+                console.log('Broadcast from ', fromUser.name, ' : ', data.msg);
+                socket.broadcast.emit('broadcast', {name: fromUser.name, msg: data.msg});
+            }
         });
 
-        socket.on('private', function (fromName, toSessionId, msg) {
-            console.log('Private from ', fromName, ' to ', toSessionId, msg);
-            var user = findUser(toSessionId);
-            if (user)
-                user.socket.emit('private', {name: fromName, msg: msg});
+        //私聊　{to_session_id, msg}
+        socket.on('private', function (data) {
+            var fromUser = findUser(sessionId);
+            if(fromUser) {
+                console.log('Private from ', fromUser.name, ' to ', data.to_session_id, data.msg);
+                var toUser = findUser(data.to_session_id);
+                if (toUser)
+                    toUser.socket.emit('private', {name: fromUser.name, msg: data.msg});
+            }
         });
 
         socket.on('disconnect', function () {
-            //var sessionId = getSessionId(socket.request.headers.cookie, 'koa:sess');
-            //removeUser(sessionId);
             console.log(this.id, ' has been disconnect.');
         });
     });

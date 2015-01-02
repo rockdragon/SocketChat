@@ -1,10 +1,9 @@
 $(function(){
     // generate socket connection
     var socketClient = function () {
-        var socket = io.connect('/', {
+        return io.connect('/', {
             reconnection: false
         });
-        return socket;
     };
 
     var socket = socketClient();
@@ -16,9 +15,18 @@ $(function(){
     });
 
     // message handler
-    socket.on('private', function(msg){
-
+    socket.on('private', function(data){
+        $('#messageBoard').append('[私聊] 来自 [' + data.name + ']: ' + data.msg + '\n');
     });
+    function sendPrivate(session_id, msg){
+        socket.emit('private', {to_session_id: session_id, msg: msg});
+    }
+    socket.on('broadcast', function(data){
+        $('#messageBoard').append('[广播] 来自 [' + data.name + ']: ' + data.msg + '\n');
+    });
+    function sendBroadcast(msg){
+        socket.emit('broadcast', {msg: msg});
+    }
 
     //UI event
     function getSelectedItem(){
@@ -33,9 +41,14 @@ $(function(){
         var msg = message.val();
         if(msg) {
             message.val('');
-            $('#messageBoard').append(msg + '\n');
             var selected = getSelectedItem();
-            console.log(selected.text, selected.value);
+            if(selected.value === 'broadcast'){
+                $('#messageBoard').append('[我] 对所有人说: ' + msg + '\n');
+                sendBroadcast(msg);
+            } else {
+                $('#messageBoard').append('[我] 对 [' + selected.text + '] 说: ' + msg + '\n');
+                sendPrivate(selected.value, msg);
+            }
         }
     });
 });
