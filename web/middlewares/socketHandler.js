@@ -70,21 +70,26 @@ function messageHandler(io) {
         }
 
         socket.on('broadcast', function (data) {
+            //广播
             var fromUser = findUser(sessionId);
             if(fromUser) {
-                console.log('Broadcast from ', fromUser.name, ' : ', data.msg);
-                socket.broadcast.emit('broadcast', {name: fromUser.name, msg: data.msg});
+                socket.broadcast.emit('broadcast', {
+                    name: fromUser.name,
+                    msg: data.msg
+                });
             }
         });
 
-        //私聊　{to_session_id, msg}
         socket.on('private', function (data) {
+            //私聊　{to_session_id, msg}
             var fromUser = findUser(sessionId);
             if(fromUser) {
-                console.log('Private from ', fromUser.name, ' to ', data.to_session_id, data.msg);
                 var toUser = findUser(data.to_session_id);
                 if (toUser)
-                    toUser.socket.emit('private', {name: fromUser.name, msg: data.msg});
+                    toUser.socket.emit('private', {
+                        name: fromUser.name,
+                        msg: data.msg
+                    });
             }
         });
 
