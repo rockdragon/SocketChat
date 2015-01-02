@@ -12,7 +12,7 @@ module.exports.otherUsers = otherUsers;
  * */
 var users = [];
 
-function findInUsers(session_id) {
+function findInUsers(session_id) {//通过session_id查找
     var index = -1;
     for (var j = 0, len = users.length; j < len; j++) {
         if (users[j].session_id === session_id)
@@ -20,7 +20,7 @@ function findInUsers(session_id) {
     }
     return index;
 }
-function addUser(name, session_id) {
+function addUser(name, session_id) {//添加用户
     var index = findInUsers(session_id);
     if (index === -1) //not exist
         users.push({name: name, session_id: session_id, socket: null});
@@ -29,17 +29,17 @@ function addUser(name, session_id) {
             users[index].name = name;
     }
 }
-function setUserSocket(session_id, socket){
+function setUserSocket(session_id, socket){//更新用户socket
     var index = findInUsers(session_id);
     if (index !== -1){
         users[index].socket = socket;
     }
 }
-function findUser(session_id) {
+function findUser(session_id) {//查找
     var index = findInUsers(session_id);
     return index > -1 ? users[index] : null;
 }
-function otherUsers(session_id){
+function otherUsers(session_id){//其他人
     var results = [];
     for (var j = 0, len = users.length; j < len; j++) {
         if (users[j].session_id !== session_id)

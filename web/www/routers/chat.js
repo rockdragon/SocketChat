@@ -1,7 +1,6 @@
 var Router = require('koa-router'),
     router = new Router();
 var parse = require('co-body');
-var config = require('../../../modules/config/configUtils').getConfigs();
 var socketHandler = require('../../middlewares/socketHandler');
 
 router.get('/', function *() {
