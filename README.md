@@ -4,11 +4,11 @@ SocketChat
 Chat room scaffolding
 
 Configuration
-==========
-'''JSON
+======
+```JSON
 {
      "SECRET": "chat__socket",
      "www_port": 3000
 }
-'''
+```
 
