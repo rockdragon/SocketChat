@@ -7,7 +7,7 @@ module.exports.addUser = addUser;
 module.exports.otherUsers = otherUsers;
 
 /*
- * Users
+ * 内部数据结构：用户列表
  *  [{name, session_id, socket} ...]
  * */
 var users = [];

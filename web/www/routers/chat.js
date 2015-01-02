@@ -8,10 +8,8 @@ router.get('/', function *() {
     var session_id = this.cookies.get('koa:sess');
     var name = this.session.name;
     console.log('session_id', session_id, 'name', name);
-    if(session_id && name) {
+    if(session_id && name) {//添加到用户列表
         socketHandler.addUser(name, session_id);
-        var others = socketHandler.otherUsers(session_id);
-        console.log(others);
         yield this.render('../www/views/chat');
     } else {
         this.redirect('/chat/login');
