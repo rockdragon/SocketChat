@@ -13,7 +13,7 @@ windows下:
     设置系统变量 `chat_home`
     d:\repo\SocketChat
 
-配置文件，放置在项目根目录下，名为 config.cfg
+新建config.cfg，置于项目根目录
 ======
 ```JSON
 {
